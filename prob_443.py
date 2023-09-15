@@ -15,3 +15,31 @@ After you are done modifying the input array, return the new length of the array
 You must write an algorithm that uses only constant extra space.
 '''
 
+def compress(chars: list[str]) -> int:
+    '''
+
+    '''
+    curent_char = ''
+    count_char = 1
+    res = []
+    for c in chars:
+        if c == curent_char:
+            count_char += 1
+        elif curent_char != '':
+            res.append(curent_char)
+            if count_char > 1:
+                res.extend(list(str(count_char)))
+            curent_char = c
+            count_char = 1
+        else:
+            curent_char = c
+    res.append(curent_char)
+    if count_char > 1:
+        res.extend(list(str(count_char)))
+    for k,v in enumerate(res):
+        chars[k] = v
+    return len(res), chars
+
+if __name__ == "__main__":
+    l = ["a","b","b","b"]
+    print(compress(l))

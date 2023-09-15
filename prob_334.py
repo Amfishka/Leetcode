@@ -6,32 +6,29 @@ triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k].
 '''
 
 def increasingTriplet(nums: list[int]) -> bool:
+    '''
+    Идём от обратного будем искать наименьшие значения в массиве. Да мы идём по
+    массиву от начала и проверяем если меньше первого из тройника, то записываем
+    его первым в тройничок. Если больше первого, но меньше второго, то вторым,
+    а иначе число больше 2х из тройничка. мы нашли ответ и тройничок готов.
+    Да если вывести ответ, то он не выдаст правильные значения переменных и
+    индексов, но нам это и не нужно. Если первое значение идёт после второго
+    в массиве потому что оно меньше чем то, которое было записано ранее. Но ведь
+    значение меньше, чем второе существует левее второго. Поэтому на ответ не повлияет
+
+    '''
     res = []
+    # Делаем очень большие числа
     f = float('inf')
     s = float('inf')
-    t = float('inf')
 
     for n in nums:
-        # If n is less than f, it means n can be a potential candidate for
-        # the first element of an increasing triplet subsequence.
-        # So, it updates f to n.
         if n <= f:
             f = n
-        # If n is greater than f and less than s, it means n can be a potential
-        # candidate for the second element of an increasing triplet subsequence.
-        #  So, it updates s to n.
         elif n <= s:
             s = n
-        # If n is greater than both f and s, it indicates the presence of an
-        # increasing triplet subsequence. So, it returns True.
         elif n > s:
-            t = n
-            print(f, s, t)
             return True
-
-    # If the loop completes without finding an increasing triplet subsequence,
-    # it means there is no such subsequence in the array, so it returns False.
-    print(f, s, t)
     return False
 
 
