@@ -9,7 +9,6 @@ You must write an algorithm that runs in O(n) time and without using the
 division operation.
 
 '''
-
 def prod(nums: list[int]) -> list[int]:
     '''
     Используются префиксы и постфиксы. (Можно использовать 1 переменную)
